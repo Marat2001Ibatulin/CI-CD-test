@@ -47,7 +47,7 @@ jobs:
         run: flake8 django_cicd/logistic/ --exclude=django_cicd/logistic/migrations/
 
       - name: Тестирование
-        run: django_cicd/python manage.py test
+        run: python django_cicd/manage.py test
         env:
           SECRET_KEY: ${{ env.SECRET_KEY }}
           DEBUG: ${{ env.DEBUG }}
