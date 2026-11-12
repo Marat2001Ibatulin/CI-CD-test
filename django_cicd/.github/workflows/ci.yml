@@ -41,13 +41,13 @@ jobs:
           python-version: "3.10"
 
       - name: Установка зависимостей
-        run: pip install -r ..requirements.txt
+        run: pip install -r django_cicd/requirements.txt
 
       - name: Линтинг
-        run: flake8 logistic/ --exclude=logistic/migrations/
+        run: flake8 django_cicd/logistic/ --exclude=django_cicd/logistic/migrations/
 
       - name: Тестирование
-        run: python manage.py test
+        run: python django_cicd/manage.py test
         env:
           SECRET_KEY: ${{ env.SECRET_KEY }}
           DEBUG: ${{ env.DEBUG }}
@@ -65,4 +65,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: expect /home/amuzhev/django_cicd/deploy.exp
+          script: expect /home/user/django_cicd/deploy.exp
