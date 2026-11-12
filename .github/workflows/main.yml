@@ -47,7 +47,7 @@ jobs:
         run: flake8 django_cicd/logistic/ --exclude=django_cicd/logistic/migrations/
 
       - name: Тестирование
-        run: python manage.py test
+        run: django_cicd/python manage.py test
         env:
           SECRET_KEY: ${{ env.SECRET_KEY }}
           DEBUG: ${{ env.DEBUG }}
@@ -65,4 +65,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: expect /home/amuzhev/django_cicd/deploy.exp
+          script: expect /home/user/django_cicd/deploy.exp
